@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionsComponent } from '../sections/sections.component';
 
@@ -9,11 +9,11 @@ import { SectionsComponent } from '../sections/sections.component';
   template: `
     <section>
       <form>
-        <input [ngModel]="password" (ngModelChange)="updateStrength()" type="password" placeholder="Enter your password" />
+        <input [(ngModel)]="password" (ngModelChange)="updateStrength()" type="password" placeholder="Enter your password" />
       </form>
     </section>
     <section class="results">
-      <app-sections></app-sections>
+      <app-sections [strength]="strength" (strengthChange)="updateStrength()"></app-sections>
     </section>
   `,
   styleUrl: './field.component.css'
@@ -21,6 +21,10 @@ import { SectionsComponent } from '../sections/sections.component';
 export class FieldComponent {
   password: string = '';
   strength: string = '';
+
+  @Output() strengthChange:
+    EventEmitter<string> = new
+    EventEmitter<string>();
 
   updateStrength() {
     const length = this.password.length;
@@ -34,5 +38,7 @@ export class FieldComponent {
     } else {
       this.strength = 'medium';
     }
+
+    this.strengthChange.emit(this.strength);
   }
 }
