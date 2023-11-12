@@ -1,0 +1,23 @@
+div {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 16px 5px;
+    border: solid 1px gray;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
