@@ -9,7 +9,7 @@ import { SectionsComponent } from '../sections/sections.component';
   template: `
     <section>
       <form>
-        <input type="password" placeholder="Enter your password">
+        <input [(ngModel)]="password" (ngModelChange)="updateStrength()" type="password" placeholder="Enter your password" />
       </form>
     </section>
     <section class="results">
@@ -19,5 +19,5 @@ import { SectionsComponent } from '../sections/sections.component';
   styleUrl: './field.component.css'
 })
 export class FieldComponent {
-
+  
 }
